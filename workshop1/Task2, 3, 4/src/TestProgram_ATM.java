@@ -6,7 +6,7 @@ public class TestProgram_ATM {
 
 	public static void main(String[] args) {
 		Account[] accounts = new Account[10];
-		for (int i = 0; i < 10; i++) { // mk:debugpoint
+		for (int i = 0; i < 10; i++) { 
 			accounts[i] = new Account(i, 100.0);
 		}
 		System.out.print("Enter an id(1 - 10) ");

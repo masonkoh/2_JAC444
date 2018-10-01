@@ -18,7 +18,7 @@ public class Account {
 		dateCreated = new java.util.Date();
 	}
 
-	public Account(int id, double balace) {
+	public Account(int id, double balance) {
 		this();
 		this.id = id;
 		this.balance = balance;
