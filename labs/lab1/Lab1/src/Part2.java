@@ -51,7 +51,6 @@ public class Part2 {
 			userNum /= 10;
 			int sum = lessThan10 + tens + hundreds;
 			System.out.println("SUM: " + sum);
-
 		}
 		
 	}
