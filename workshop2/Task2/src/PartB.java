@@ -6,14 +6,10 @@ public class PartB {
 	static final int LOAN = 1;
 	static double[][][] mBanks;
 
+	// 1st: bank number
+	// 2nd: number of banks i give loan
+	// 3rd: id of bank who i give laon
 
-//	1st: bank number
-//	2nd: number of banks i give loan
-//	3rd: id of bank who i give laon
-	
-		
-	
-	
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
@@ -24,7 +20,7 @@ public class PartB {
 		while (sc.hasNextInt()) {
 			n = sc.nextInt(); // n = No of Banks
 			while (n > 0) {
-				
+
 				System.out.print("Enter minimum limit: ");
 				limit = sc.nextInt();
 				mBanks = new double[n][][];
@@ -59,7 +55,7 @@ public class PartB {
 				for (int i = 0; i < unsafeIndex.length; i++) {
 					System.out.println("Bank# " + i + " unsafe: " + unsafeIndex[i]);
 				}
-//				sc.close();
+				// sc.close();
 				break;
 			}
 		}

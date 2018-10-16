@@ -13,7 +13,7 @@ public class PartB {
 
 		// getting file
 		File filename = new File("hangman.txt");
-//		System.out.println(filename.getAbsolutePath());
+		// System.out.println(filename.getAbsolutePath());
 		if (!filename.exists()) {
 			System.out.println(filename.getAbsolutePath());
 			System.out.println(filename + " does not exist.");

@@ -41,11 +41,11 @@ public class PartA {
 	}
 
 	public static String getWord() {
-//		System.out.println(words.length);
-//		System.out.println(Math.random() * words.length);
+		// System.out.println(words.length);
+		// System.out.println(Math.random() * words.length);
 
-		return words[(int) (Math.random() * words.length)]; 		// i don't know why it works
-		
+		return words[(int) (Math.random() * words.length)]; // i don't know why it works
+
 	}
 
 	public static String getHiddenWord(String word) {
