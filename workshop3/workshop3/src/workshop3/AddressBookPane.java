@@ -45,7 +45,7 @@ public class AddressBookPane extends BorderPane {
 				tfCity, new Label("State"), tfState, new Label("Zip"), tfZip);
 
 		// Place nodes in the hbox
-		paneForButtons.getChildren().addAll(btAdd, btFirst, btNext, btPrevious, btLast, btUpdate);
+		paneForButtons.getChildren().addAll(btAdd, btUpdate, btFirst, btPrevious, btNext, btLast);
 		paneForButtons.setAlignment(Pos.CENTER);
 
 		// Place nodes in pane

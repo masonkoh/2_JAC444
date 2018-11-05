@@ -1,4 +1,3 @@
-
 // com.sun.javafx.css.parser.Css2Bin.main(Css2Bin.java:40)
 //package workshop3;
 
@@ -28,17 +27,25 @@ public class AddressBook extends Application {
 		pane.btUpdate.setOnAction(e -> update());
 
 		// Create a scene and place it in the stage
-		Scene scene = new Scene(pane, 330, 130); // original: pane, 360, 130
+		Scene scene = new Scene(pane, 330, 150); // original: pane, 360, 130
 		// primaryStage.setTitle("Exericse_17_09"); // Set the stage title
 		primaryStage.setTitle("'WS3:AddressBook.java' by MK"); // Set the stage title
 		primaryStage.setScene(scene); // Place the scene in the stage
 		primaryStage.show(); // Display the stage
 	}
 
+	//RandomAccessFile.length() : return file length
+	//RandomAccessFile.seek(point position value) : set pointer position
+	//RandomAccessFile.read(byte array) : from current pointer position, read in as much as byte array length
+	//RandomAccessFile.getFilePointer() :  return current pointer position
+	//RandomAccessFile.close() : file close
+	
+	
 	/** Write an address to file */
 	private void add() {
 		try ( // Create a random access file
-				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
+				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) { // one of "r", "rw", "rws",
+																							// or "rwd"
 			inout.seek(inout.length());
 			write(inout);
 			System.out.println("Adding address #1");
@@ -53,7 +60,7 @@ public class AddressBook extends Application {
 		try ( // Create a random access file
 				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
 			if (inout.length() > 0) {
-				inout.seek(0);
+				inout.seek(0);	
 				read(inout);
 				System.out.println("Reading address #1");
 				count = 1;
