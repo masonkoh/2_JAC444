@@ -10,7 +10,7 @@ import java.io.*;
 
 public class AddressBook extends Application {
 	protected AddressBookPane pane = new AddressBookPane();
-	final int NAME = 32;
+	final int NAME = 32; // data type int, or char, same result
 	final int STREET = 32;
 	final int CITY = 20;
 	final int STATE = 2;
@@ -28,9 +28,9 @@ public class AddressBook extends Application {
 		pane.btUpdate.setOnAction(e -> update());
 
 		// Create a scene and place it in the stage
-		Scene scene = new Scene(pane, 360, 130);
+		Scene scene = new Scene(pane, 330, 130); // original: pane, 360, 130
 		// primaryStage.setTitle("Exericse_17_09"); // Set the stage title
-		primaryStage.setTitle("'AddressBook.java' by Mason Koh"); // Set the stage title
+		primaryStage.setTitle("'WS3:AddressBook.java' by MK"); // Set the stage title
 		primaryStage.setScene(scene); // Place the scene in the stage
 		primaryStage.show(); // Display the stage
 	}
@@ -41,6 +41,7 @@ public class AddressBook extends Application {
 				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
 			inout.seek(inout.length());
 			write(inout);
+			System.out.println("Adding address #1");
 		} catch (FileNotFoundException ex) {
 		} catch (IOException ex) {
 		} catch (IndexOutOfBoundsException ex) {

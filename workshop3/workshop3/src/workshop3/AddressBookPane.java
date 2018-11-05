@@ -33,14 +33,14 @@ public class AddressBookPane extends BorderPane {
 
 	private void drawAddressBook() {
 		// Set the column size for each text field
-		tfName.setPrefColumnCount(23);
-		tfStreet.setPrefColumnCount(23);
-		tfCity.setPrefColumnCount(8);
-		tfState.setPrefColumnCount(2);
-		tfZip.setPrefColumnCount(4);
+		tfName.setPrefColumnCount(23); // original: 23
+		tfStreet.setPrefColumnCount(23); // original: 23
+		tfCity.setPrefColumnCount(8); // original: 8
+		tfState.setPrefColumnCount(2); // original: 2
+		tfZip.setPrefColumnCount(4); // original: 4
 
 		// Place nodes in the flow pane
-		paneForInfo.setPadding(new Insets(10, 10, 0, 10));
+		paneForInfo.setPadding(new Insets(10, 10, 0, 10)); // original: 10, 10, 0, 10
 		paneForInfo.getChildren().addAll(new Label("Name"), tfName, new Label("Street"), tfStreet, new Label("City   "),
 				tfCity, new Label("State"), tfState, new Label("Zip"), tfZip);
 
