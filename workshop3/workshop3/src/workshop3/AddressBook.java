@@ -46,7 +46,7 @@ public class AddressBook extends Application {
 	/** Write an address to file */
 	private void add() {
 		try ( // Create a random access file
-				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) { // one of "r", "rw", "rws",
+				RandomAccessFile inout = new RandomAccessFile("Address.dat", "rw");) { // one of "r", "rw", "rws",
 																							// or "rwd"
 			inout.seek(inout.length());
 			write(inout);
@@ -60,7 +60,7 @@ public class AddressBook extends Application {
 	/** Read the first address from the file */
 	private void first() {
 		try ( // Create a random access file
-				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
+				RandomAccessFile inout = new RandomAccessFile("Address.dat", "rw");) {
 			if (inout.length() > 0) {
 				inout.seek(0);
 				read(inout);
@@ -76,7 +76,7 @@ public class AddressBook extends Application {
 	/** Read the next Address from the file */
 	private void next() {
 		try ( // Create a random access file
-				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
+				RandomAccessFile inout = new RandomAccessFile("Address.dat", "rw");) {
 			// 32+32+20+2+5 = 91
 			if (count * 91 < inout.length()) {
 				inout.seek(count * 91);
@@ -93,7 +93,7 @@ public class AddressBook extends Application {
 	/** Read the previous Address from the file */
 	private void previous() {
 		try ( // Create a random access file
-				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
+				RandomAccessFile inout = new RandomAccessFile("Address.dat", "rw");) {
 			if (count > 1)
 				count--;
 			else
@@ -108,9 +108,9 @@ public class AddressBook extends Application {
 	/** Read last address from file */
 	private void last() {
 		try ( // Create a random access file
-				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
+				RandomAccessFile inout = new RandomAccessFile("Address.dat", "rw");) {
 			count = ((int) inout.length() / 91);
-			System.out.println(count);
+//			System.out.println(count);  // trace of lab, talking to prof
 			inout.seek((count * 91) - 91);
 			read(inout);
 			System.out.println("Reading address #" + count);
@@ -121,7 +121,7 @@ public class AddressBook extends Application {
 	/** Edit and address in file */
 	private void update() {
 		try ( // Create a random access file
-				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
+				RandomAccessFile inout = new RandomAccessFile("Address.dat", "rw");) {
 			inout.seek(count * 91 - 91);
 			write(inout);
 		} catch (FileNotFoundException ex) {
@@ -145,7 +145,6 @@ public class AddressBook extends Application {
 		// about randomaccessfile.write()
 		// The java.io.RandomAccessFile.write(byte[] b,int off,int len) method writes
 		// len bytes from the specified byte array starting at offset off to this file.
-
 
 		inout.write(fixedLength(pane.tfName.getText().getBytes(), NAME));
 		inout.write(fixedLength(pane.tfStreet.getText().getBytes(), STREET));
