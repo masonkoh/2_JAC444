@@ -1,3 +1,4 @@
+
 // com.sun.javafx.css.parser.Css2Bin.main(Css2Bin.java:40)
 //package workshop3;
 
@@ -14,6 +15,7 @@ public class AddressBook extends Application {
 	final int CITY = 20;
 	final int STATE = 2;
 	final int ZIP = 5;
+	// 32+32+20+2+5 = 91
 	protected int count = 0;
 
 	@Override // Override the start method in the Application class
@@ -34,13 +36,13 @@ public class AddressBook extends Application {
 		primaryStage.show(); // Display the stage
 	}
 
-	//RandomAccessFile.length() : return file length
-	//RandomAccessFile.seek(point position value) : set pointer position
-	//RandomAccessFile.read(byte array) : from current pointer position, read in as much as byte array length
-	//RandomAccessFile.getFilePointer() :  return current pointer position
-	//RandomAccessFile.close() : file close
-	
-	
+	// RandomAccessFile.length() : return file length
+	// RandomAccessFile.seek(point position value) : set pointer position
+	// RandomAccessFile.read(byte array) : from current pointer position, read in as
+	// much as byte array length
+	// RandomAccessFile.getFilePointer() : return current pointer position
+	// RandomAccessFile.close() : file close
+
 	/** Write an address to file */
 	private void add() {
 		try ( // Create a random access file
@@ -60,7 +62,7 @@ public class AddressBook extends Application {
 		try ( // Create a random access file
 				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
 			if (inout.length() > 0) {
-				inout.seek(0);	
+				inout.seek(0);
 				read(inout);
 				System.out.println("Reading address #1");
 				count = 1;
@@ -75,6 +77,7 @@ public class AddressBook extends Application {
 	private void next() {
 		try ( // Create a random access file
 				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
+			// 32+32+20+2+5 = 91
 			if (count * 91 < inout.length()) {
 				inout.seek(count * 91);
 				read(inout);
@@ -106,7 +109,8 @@ public class AddressBook extends Application {
 	private void last() {
 		try ( // Create a random access file
 				RandomAccessFile inout = new RandomAccessFile("AddressBook.dat", "rw");) {
-			count = ((int) inout.length()) / 91;
+			count = ((int) inout.length() / 91);
+			System.out.println(count);
 			inout.seek((count * 91) - 91);
 			read(inout);
 			System.out.println("Reading address #" + count);
@@ -125,8 +129,24 @@ public class AddressBook extends Application {
 		}
 	}
 
+	// Notice the use of JTextField's getText method to retrieve the text currently
+	// contained by the text field. The text returned by this method does not
+	// include a newline character for the Enter key that fired the action event.
 	/** Write addreass to file */
 	private void write(RandomAccessFile inout) throws IOException {
+		// about .getByte()
+		// // Encodes this String into a sequence of bytes using theplatform's default
+		// charset, storing the result into a new byte array.
+		// The behavior of this method when this string cannot be encoded inthe default
+		// charset is unspecified. The CharsetEncoder class should be used when more
+		// controlover the encoding process is required.
+		// Returns:The resultant byte array
+
+		// about randomaccessfile.write()
+		// The java.io.RandomAccessFile.write(byte[] b,int off,int len) method writes
+		// len bytes from the specified byte array starting at offset off to this file.
+
+
 		inout.write(fixedLength(pane.tfName.getText().getBytes(), NAME));
 		inout.write(fixedLength(pane.tfStreet.getText().getBytes(), STREET));
 		inout.write(fixedLength(pane.tfCity.getText().getBytes(), CITY));
@@ -134,6 +154,13 @@ public class AddressBook extends Application {
 		inout.write(fixedLength(pane.tfZip.getText().getBytes(), ZIP));
 		System.out.println("Address #" + count + " saved!");
 	}
+
+	// The .setText() method in JAVA is generally used to print the specified string
+	// by replacing the already written or current content with the aforementioned
+	// String.
+	//
+	// The .append() method, which is unique to the Text Area is used to add a
+	// string to the end of the existing text and so on.
 
 	/** Read address from file */
 	private void read(RandomAccessFile inout) throws IOException {
@@ -161,7 +188,7 @@ public class AddressBook extends Application {
 
 	/** Return a byte[] of fixed-length */
 	private byte[] fixedLength(byte[] x, int n) {
-		byte[] b = new byte[n];
+		byte[] b = new byte[n]; // get the length of NAME, or STREET, or etcetc
 		for (int i = 0; i < x.length; i++) {
 			b[i] = x[i];
 		}
