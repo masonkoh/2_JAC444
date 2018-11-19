@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.io.*;
 
 public class Task2 {
 
@@ -13,7 +14,12 @@ public class Task2 {
 
 		while (!hasWon) {
 
-			String diskColor = (isPlayer1Turn) ? "red" : "yellow";
+			String diskColor;
+			if (isPlayer1Turn) {
+				diskColor = "red";
+			} else {
+				diskColor = "yello";
+			}
 
 			displayMatrix(m);
 			boolean isFirstInput = true;
@@ -40,9 +46,9 @@ public class Task2 {
 
 			isPlayer1Turn = !isPlayer1Turn;
 		}
-		// input.close();
 
 	}
+	// input.close();
 
 	public static void displayMatrix(String[][] m) {
 
@@ -72,18 +78,26 @@ public class Task2 {
 	}
 
 	public static boolean isConsecutiveFour(String[][] m) {
+		String s;
+		if (isPlayer1Turn) {
+			s = "R";
+		} else {
+			s = "Y";
+		}
 
-		String s = (isPlayer1Turn) ? "R" : "Y";
+		System.out.println("mk debug: " + m[0][0]);
 
 		int occurrence = 0;
 		// (m[0].length - 3) --> reason: only checking occurrences of 4
-		for (int j = 0; j < m[0].length - 3; j++) {
+		// System.out.println("debug: " + m[1].length);
+		for (int j = 0; j < m[0].length - 4; j++) {
 			int y = m.length - 1; // row always starts on last row
 			int x = j;
 			while (x < m[0].length && y >= 0) {
 
 				if (m[y][x].contains(s)) { // | | | | | |R|R|
 					occurrence++; // | | | | |R|R|R|
+
 					if (occurrence == 4)
 						return true; // | | | |R|R|R|R|
 				} else { // | | |R|R|R|R| |
@@ -93,7 +107,6 @@ public class Task2 {
 				y--;
 			}
 		}
-
 		// (m.length - 2) --> reason: only checking occurrences of 4
 		// and last row has already been checked
 		for (int i = m.length - 2; i > 2; i--) {
@@ -164,9 +177,20 @@ public class Task2 {
 
 		String s;
 		if (isPlayer1Turn) {
-			s = (column > 0) ? "R|" : "|R|";
+
+			if (column > 0) {
+				s = "R|";
+			} else {
+				s = "|R|";
+			}
+
 		} else {
-			s = (column > 0) ? "Y|" : "|Y|";
+
+			if (column > 0) {
+				s = "Y|";
+			} else {
+				s = "|Y|";
+			}
 		}
 		boolean didRowUpdate = false;
 		int row = 0;
@@ -185,11 +209,15 @@ public class Task2 {
 		m[row][column] = s;
 
 		return true;
-	}
+	}	
 
 	public static boolean isClear(String s) {
 
-		return s.contains("| |") || s.contains(" |");
+		if (s.contains("| |") || s.contains(" |")) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
