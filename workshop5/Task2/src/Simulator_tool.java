@@ -10,7 +10,7 @@ public class Simulator_tool {
 					rightCount++;
 				}
 			}
-			slots[rightCount]++;
+			slots[rightCount]++; 
 		}
 		return slots;
 	}
@@ -27,6 +27,8 @@ public class Simulator_tool {
 
 			for (int way = 1; way < s; way++) {
 				int random = (int) (Math.random() * 2);
+//				System.out.print((int)(Math.random()*2)); //[MK_DEBUGGING]
+ 
 				if (random == 0) {
 					path.append("L");
 				} else {
@@ -35,6 +37,7 @@ public class Simulator_tool {
 			}
 
 			ballpaths[ball] = path.toString();
+//			System.out.println("");//[MK_DEBUGGING]
 		}
 
 		return ballpaths;

@@ -5,8 +5,8 @@ public class Simulator {
 		int[] slots = Simulator_tool.readBallPaths(ballpaths, s);
 
 		// display paths
-		for (String path : ballpaths) {
-			System.out.println(path);
+		for (int i = 0; i < ballpaths.length; i++) {
+			System.out.println("ball goes... : " + ballpaths[i]);
 		}
 
 		System.out.println();
@@ -19,6 +19,7 @@ public class Simulator {
 		for (int i = slots.length - 1; i > 0; i--) {
 			String output = "";
 			for (int j = 0; j < slots.length; j++) {
+
 				if (slots[j] == i) {
 					output += "O";
 					slots[j]--;
